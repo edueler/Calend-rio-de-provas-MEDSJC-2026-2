@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+							<style>
+								body {
+									background-color: white; /* Ensure the iframe has a white background */
+								}
+
+								
+							</style>
+                        </head>
+                        <body>
+                            
+
+
+<meta charset="UTF-8">
+<title>Calendário Completo de Provas 2026/2 — Corrigido</title>
+<style>
+  :root{font-family:Segoe UI, Arial, sans-serif;}
+  body{background:#f4f5f7;margin:0;padding:20px;color:#222;}
+  h1{text-align:center;color:#333;}
+  .toolbar{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+  .export-btn{background:#2e7d32;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,.2);}
+  .export-btn:hover{background:#256428;}
+  .export-filtered-btn{background:#1565c0;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,.2);}
+  .export-filtered-btn:hover{background:#0d47a1;}
+  .font-color-btn,.clear-color-btn{color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,.2);}
+  .font-color-btn{background:#6a1b9a;}
+  .font-color-btn:hover{background:#4a148c;}
+  .clear-color-btn{background:#607d8b;}
+  .clear-color-btn:hover{background:#455a64;}
+  #fontColorPicker{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
+  .semester-filter{max-width:1100px;margin:0 auto 18px auto;padding:12px 16px;background:#ffffff;border:1px solid #d5dbe0;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-size:13px;}
+  #semesterOptions{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;}
+  .semester-option{display:inline-flex;align-items:center;gap:4px;padding:5px 8px;border-radius:6px;cursor:pointer;font-weight:600;background:#f0f0f0;}
+  .semester-option input{cursor:pointer;accent-color:#2e7d32;}
+  .filter-btn{border:none;border-radius:6px;padding:6px 10px;background:#455a64;color:white;font-size:12px;font-weight:700;cursor:pointer;}
+  .filter-btn:hover{background:#263238;}
+  .event.semester-hidden{display:none !important;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;}
+  .legend span{padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600;}
+  .month{margin-bottom:40px;}
+  .month h2{background:#333;color:#fff;padding:8px 14px;border-radius:6px;display:inline-block;margin-bottom:10px;}
+  .calendar-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
+  .weekday-header{font-weight:700;text-align:center;background:#444;color:#fff;padding:5px;border-radius:5px;font-size:12px;}
+  .day-cell{background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.15);padding:6px;min-height:120px;display:flex;flex-direction:column;font-size:12px;}
+  .day-cell.empty{background:transparent;box-shadow:none;}
+  .day-cell.saturday{background:#fff9ec;}
+  .day-num{font-weight:700;margin-bottom:4px;text-align:center;background:#eee;border-radius:4px;padding:2px;font-size:12px;}
+  .day-cell.saturday .day-num{background:#ffe9b3;}
+  .slot{border:1px dashed #ccc;border-radius:6px;padding:3px;margin-bottom:3px;min-height:34px;}
+  .slot-label{font-size:10px;font-weight:700;color:#666;display:block;margin-bottom:2px;}
+  .event{padding:4px 16px 4px 5px;border-radius:5px;margin:3px 0;font-size:11px;line-height:1.25;position:relative;cursor:text;}
+  .event:focus{outline:1px solid #333;}
+  .event .sem-tag{font-weight:800;}
+  .event .del{position:absolute;top:0px;right:2px;cursor:pointer;font-size:11px;color:#333;background:rgba(255,255,255,.7);border-radius:50%;padding:0 3px;line-height:1.4;}
+  .add-btn{font-size:10px;border:none;background:#e0e0e0;border-radius:4px;padding:1px 5px;cursor:pointer;margin-top:2px;}
+  .add-btn:hover{background:#d0d0d0;}
+  .note{max-width:900px;margin:0 auto 20px auto;background:#e7f7e7;border:1px solid #a8d8a8;border-radius:8px;padding:10px 14px;font-size:13px;}
+  .sem1{background:#FFF59D;} .sem2{background:#90CAF9;} .sem3{background:#A5D6A7;}
+  .sem4{background:#FFCC80;} .sem5{background:#CE93D8;} .sem6{background:#F48FB1;}
+  .sem7{background:#FFAB91;} .sem8{background:#80CBC4;} .sem9{background:#B0BEC5;}
+  .sem10{background:#EF9A9A;} .sem11{background:#DCE775;} .sem12{background:#BCAAA4;}
+</style>
+
+
+
+<h1>📅 Calendário Completo de Provas — 2026/2 (Corrigido)</h1>
+
+<div class="toolbar">
+  <button class="export-btn" onclick="exportCalendar()">💾 Exportar Calendário Atualizado</button>
+  <button class="export-filtered-btn" onclick="exportFilteredCalendar()">📤 Exportar Somente Filtrado</button>
+  <button class="font-color-btn" onclick="openFontColorPicker()">🎨 Cor da fonte</button>
+  <button class="clear-color-btn" onclick="clearFontColor()">↩ Remover cor</button>
+  <input type="color" id="fontColorPicker" value="#000000" onchange="applyFontColor(this.value)">
+</div>
+
+<div class="semester-filter">
+  <strong>Mostrar semestres:</strong>
+  <div id="semesterOptions"></div>
+  <button type="button" class="filter-btn" onclick="selectAllSemesters()">Todos</button>
+  <button type="button" class="filter-btn" onclick="clearAllSemesters()">Limpar</button>
+</div>
+
+<div class="note">
+  ✅ Correção aplicada: a exportação agora usa um template "limpo", evitando duplicação do calendário e dos checkboxes de semestre no arquivo baixado. Use os checkboxes para mostrar/ocultar semestres, 🎨/↩ para cor da fonte, o botão verde para exportar tudo, e o botão azul para exportar somente os semestres selecionados no momento.
+</div>
+
+<div class="legend">
+  <span class="sem1">1º semestre</span>
+  <span class="sem2">2º semestre</span>
+  <span class="sem3">3º semestre</span>
+  <span class="sem4">4º semestre</span>
+  <span class="sem5">5º semestre</span>
+  <span class="sem6">6º semestre</span>
+  <span class="sem8">8º semestre</span>
+  <span class="sem10">10º semestre</span>
+  <span class="sem12">12º semestre</span>
+</div>
+
+<div id="calendarContainer"></div>
+
+<script>
+// ============ DADOS DAS PROVAS ============
+const events = {"2026-08-01":[],"2026-08-03":[],"2026-08-04":[],"2026-08-05":[],"2026-08-06":[],"2026-08-07":[],"2026-08-08":[],"2026-08-10":[],"2026-08-11":[],"2026-08-12":[],"2026-08-13":[],"2026-08-14":[],"2026-08-15":[],"2026-08-17":[],"2026-08-18":[{"s":10,"p":"t","x":"AICM I — Prova impressa — 105 alunos — 13:30–17:30"}],"2026-08-19":[],"2026-08-20":[],"2026-08-21":[],"2026-08-22":[],"2026-08-24":[],"2026-08-25":[],"2026-08-26":[],"2026-08-27":[],"2026-08-28":[],"2026-08-29":[],"2026-08-31":[{"s":10,"p":"t","x":"Reposição AICM I — Prova impressa — 105 alunos — 13:30–17:30"}],"2026-09-01":[],"2026-09-02":[{"s":10,"p":"t","x":"TPI ABEM Presencial — 105 alunos — 13:30–17:30"}],"2026-09-03":[],"2026-09-04":[],"2026-09-05":[],"2026-09-07":[],"2026-09-08":[],"2026-09-09":[],"2026-09-10":[],"2026-09-11":[{"s":3,"p":"m","x":"NCS3 — D1 Turma A — 59 alunos — 7:30–11:05"}],"2026-09-12":[],"2026-09-14":[{"s":8,"p":"m","x":"NCS8 — D1 Turma C — 57 alunos — 07:30–10:30"},{"s":10,"p":"t","x":"Recuperação AICM I — Prova impressa — 105 alunos — 13:30–17:30"}],"2026-09-15":[{"s":8,"p":"t","x":"NCS8 — D1 Turmas A/B — 97 alunos — 13:30–16:30"},{"s":10,"p":"t","x":"Prova Teórica Internato (FNC) — 105 alunos — 13:30–17:30"}],"2026-09-16":[{"s":3,"p":"t","x":"PMSUS3 — D1 — 57 alunos — 13:30–15:30"},{"s":5,"p":"t","x":"NCS5 — D1 — 22 alunos — 13:30–16:00"}],"2026-09-17":[],"2026-09-18":[{"s":6,"p":"t","x":"NCS6 — D1 — 93 alunos — 13:30–17:30"}],"2026-09-19":[],"2026-09-21":[{"s":4,"p":"m","x":"NCS4 — D1 — 80 alunos — 7:30–11:30"}],"2026-09-22":[{"s":2,"p":"m","x":"Integração Saúde/Sociedade/Ambiente II — AV1 Turma A — 51 alunos — 11h–12h30"}],"2026-09-23":[{"s":10,"p":"t","x":"AICM2 — Prova impressa — 105 alunos — 13:30–17:30"}],"2026-09-24":[],"2026-09-25":[{"s":2,"p":"m","x":"Integração Saúde/Sociedade/Ambiente II — AV1 Turma B — 54 alunos — 11h–12h30"}],"2026-09-26":[],"2026-09-28":[{"s":6,"p":"t","x":"HM6 — D1 Turma A — 42 alunos — 14:00–15:30"},{"s":8,"p":"t","x":"Habilidades Cirúrgicas — D1 — 150 alunos — 17h"},{"s":8,"p":"t","x":"HM-EC8 — D1 — 150 alunos — 17:00"}],"2026-09-29":[{"s":4,"p":"t","x":"PMSUS4 — D1 — 66 alunos — 13:30–15:30"},{"s":10,"p":"t","x":"AICM2 — Reposição (impressa) — 105 alunos — 13:30–17:30"}],"2026-09-30":[{"s":5,"p":"m","x":"PMSUS5 — D1 — 22 alunos — 8h–11h"},{"s":6,"p":"t","x":"HM6 — D1 Turma B — 46 alunos — 14:00–15:30"}],"2026-10-01":[{"s":6,"p":"m","x":"PMSUS6 — D1 Turmas A/B — 100 alunos — 8h–11h"},{"s":2,"p":"m","x":"2º sem — Práticas Médicas Interprofissionais — A1 — 107 alunos — 11:05–12:45"},{"s":4,"p":"t","x":"PMSUS4 - D1 - 80 alunos -&nbsp; 13:30"},{"s":3,"p":"t","x":"HM3 — D1 Turma A — 57 alunos — 13:30–15:00"}],"2026-10-02":[],"2026-10-03":[],"2026-10-05":[{"s":2,"p":"m","x":"Bases Biológicas 2 — A1 Prática — 52 alunos — 7:30–11:30"},{"s":4,"p":"m","x":"Projeto Interdisciplinar II — D1 Turma A — 27 alunos — 9h30–11h"},{"s":2,"p":"t","x":"Bases Biológicas 2 — A1 Prática — 55 alunos — 13:30–17:30"},{"s":4,"p":"t","x":"Projeto Interdisciplinar II — D1 Turma B — 38 alunos — 13h30–15h"},{"s":10,"p":"t","x":"AICM2 — Recuperação (impressa) — 105 alunos — 14:00–18:00"},{"s":8,"p":"t","x":"AICM1 (impressa) — 152 alunos — 13:30–18:30"}],"2026-10-06":[{"s":1,"p":"m","x":"HM1 — D1 — 40 alunos — 7:30–10:30 IMPRESSA Sala 003"},{"s":4,"p":"m","x":"HM4 — D1 Turma A — 34 alunos — 7:30–9:00"},{"s":4,"p":"t","x":"HM4 — D1 Turma B — 41 alunos — 13:30–15:00"},{"s":12,"p":"t","x":"Prova Teórica — Final de Rotação — 240 alunos — 13:30–15:30 / 15:30–17:30 — IMPRESSA"},{"s":1,"p":"t","x":"ISSA I — D1 — 40 alunos — 13:30–15h IMPRESSA Sala 101"}],"2026-10-07":[{"s":2,"p":"m","x":"RCC2 — A1 Teórica — 107 alunos — 7:30–11:30"}],"2026-10-08":[{"s":2,"p":"m","x":"HM2 — A1 Teórica — 107 alunos — 7:30"},{"s":1,"p":"t","x":"Bases Biológicas 1 — A1 Teórica — 40 alunos — 13:30 IMPRESSA Sala 101"},{"s":12,"p":"t","x":"Reteste Prova Teórica — 100 alunos — 13:30–17:30&nbsp;"}],"2026-10-09":[{"s":1,"p":"m","x":"RCC1 — A1 — 40 alunos — 7:30 IMPRESSA Sala 003"},{"s":5,"p":"m","x":"HM5 — D1 — 22 alunos — 07:30–09:30"},{"s":8,"p":"m","x":"PMSUS8 — D1 — 150 alunos — 11h–13h30"},{"s":2,"p":"t","x":"Bases Biológicas 2 — A1 Teórica — 107 alunos — 13:30–17:30"},{"s":1,"p":"t","x":"Bases Biológicas 1 — A1 Prática — 40 alunos — 13:30"},{"s":3,"p":"t","x":"Projeto Interdisciplinar — D1 — 57 alunos — 13:30–15h"}],"2026-10-10":[],"2026-10-12":[],"2026-10-13":[{"s":8,"p":"t","x":"NCS8 — D2 Turmas A/B — 95 alunos — 13:30–16:30"}],"2026-10-14":[{"s":1,"p":"m","x":"PM Interprofissionais — A1 — 40 alunos — 8:30–10h IMPRESSA Sala 118"},{"s":8,"p":"t","x":"NCS8 — D2 Turma C — 57 alunos — 13:30–16:30"}],"2026-10-15":[],"2026-10-16":[{"s":3,"p":"m","x":"NCS3 — D2 — 59 alunos — 7:30–11:05"},{"s":6,"p":"t","x":"NCS6 — D3 Turmas A/B — 90 alunos — 13:30–17:30"}],"2026-10-17":[],"2026-10-19":[],"2026-10-20":[],"2026-10-21":[{"s":5,"p":"t","x":"NCS5 — D2 — 22 alunos — 13:30–16:00"}],"2026-10-22":[{"s":8,"p":"t","x":"PMSUS8 — Recuperação D1 (A/B/C) — até 50 alunos — 18h"}],"2026-10-23":[],"2026-10-24":[],"2026-10-26":[],"2026-10-27":[{"s":10,"p":"t","x":"Prova Teórica Internato — 105 alunos — 13:30–17:30"}],"2026-10-28":[],"2026-10-29":[{"s":4,"p":"m","x":"NCS4 — D2 — 80 alunos — 7:30"},{"s":10,"p":"t","x":"AICM3 — Prova impressa — 105 alunos — 13:30–17:30"}],"2026-10-30":[],"2026-10-31":[],"2026-11-02":[],"2026-11-03":[],"2026-11-04":[],"2026-11-05":[{"s":10,"p":"t","x":"AICM3 — Reposição (impressa) — 105 alunos — 13:30–17:30"}],"2026-11-06":[],"2026-11-07":[],"2026-11-09":[],"2026-11-10":[],"2026-11-11":[],"2026-11-12":[],"2026-11-13":[],"2026-11-14":[],"2026-11-16":[{"s":10,"p":"t","x":"AICM3 — Recuperação (impressa) — 105 alunos — 13:30–17:30"}],"2026-11-17":[],"2026-11-18":[],"2026-11-19":[],"2026-11-20":[],"2026-11-21":[],"2026-11-23":[{"s":8,"p":"t","x":"Habilidades Cirúrgicas — D2 — 150 alunos — 17:30"}],"2026-11-24":[{"s":8,"p":"m","x":"HMEC8 — OSCE Turma B — 55 alunos — 07:30–12h"},{"s":2,"p":"m","x":"Integração II — AV2 T11 A — 51 alunos — 11h–12h30"},{"s":1,"p":"m","x":"HM1 — D2 Turmas A/B — 35 alunos — 7:30–10:30"},{"s":4,"p":"t","x":"PMSUS4 — D2 — 66 alunos — 13:30–15:30"},{"s":1,"p":"t","x":"ISSA I — D2 — 40 alunos — 13:30–15h"}],"2026-11-25":[{"s":1,"p":"m","x":"PM Interprofissionais — A2 — 40 alunos — 8:30–10h"},{"s":3,"p":"t","x":"PMSUS3 — D2 — 54 alunos — 13:30–15:30"},{"s":6,"p":"t","x":"HM6 — D2 — 90 alunos — 14:00–15:30"},{"s":8,"p":"t","x":"HM8 — D2 — 150 alunos — 17:30"},{"s":8,"p":"t","x":"Habilidades Cirúrgicas — D2 — 150 alunos — 17:30"}],"2026-11-26":[{"s":1,"p":"m","x":"HM1 — Prova Prática Turmas A/B — 40 alunos — 7:30–11h"},{"s":6,"p":"m","x":"PMSUS6 — D2 Turmas A/B — 100 alunos — 8h–11h —&nbsp;"},{"s":3,"p":"t","x":"HM3 — D2 — 57 alunos — 13:30–16h"},{"s":8,"p":"t","x":"AICM2 (impressa) — 140 alunos — 13:30–18:30"}],"2026-11-27":[{"s":5,"p":"m","x":"HM5 — D2 — 22 alunos — 07:30–09:30"},{"s":8,"p":"m","x":"HMEC8 — OSCE Turma A — 45 alunos — 07:30–12h"},{"s":2,"p":"m","x":"Integração II — AV2 T11 B — 53 alunos — 11h–12h30"},{"s":3,"p":"t","x":"Projeto Interdisciplinar — D2 — 57 alunos — 13:30–15h"}],"2026-11-28":[],"2026-11-30":[{"s":2,"p":"m","x":"Bases Biológicas — A2 Prática Turma B — 7:30"},{"s":8,"p":"m","x":"NCS8 — D3 Turma C — 57 alunos — 07:30–10:30"},{"s":4,"p":"m","x":"Projeto Interdisciplinar II — D2 T9 A — 27 alunos — 9h30–11h"},{"s":2,"p":"t","x":"Bases Biológicas — A2 Prática Turma A — 13:30"},{"s":4,"p":"t","x":"Projeto Interdisciplinar II — D2 T9 B — 38 alunos — 13h30–15h"},{"s":6,"p":"t","x":"HM6 — Prática Turma A — 42 alunos — 13:30–17:00"},{"s":8,"p":"t","x":"OSCE — HMEC8 Turma A — 57 alunos — 13:30–18h"}],"2026-12-01":[{"s":2,"p":"m","x":"HM2 — A2 — 107 alunos — 7:30–9:00 Labs + TBL1"},{"s":4,"p":"m","x":"HM4 — D2 Turma A — 34 alunos — 7:30–9:00 Labs + TBL1"},{"s":1,"p":"m","x":"HM1 — Recuperação Teórica — até 40 alunos — 7:30–10:30"},{"s":1,"p":"m","x":"HM1 — Recuperação Prática — até 40 alunos — 7:30–10:30"},{"s":3,"p":"t","x":"NCS3 — D3 — 57 alunos — 13:30–17:05"},{"s":4,"p":"t","x":"HM4 — D2 Turma B — 41 alunos — 13:30–15:00"},{"s":8,"p":"t","x":"NCS8 — D3 Turmas A/B — 95 alunos — 13:30–16:30"},{"s":1,"p":"t","x":"ISSA I — Recuperação — 40 alunos — 13:30–15h — IMPRESSA"},{"s":1,"p":"t","x":"RCC1 — A2 — 40 alunos — 15:30 — IMPRESSA"},{"s":8,"p":"t","x":"HMEC8 — D2 — 150 alunos — 18h–19h"}],"2026-12-02":[{"s":2,"p":"m","x":"RCC2 — A2 — 105 alunos — 7:30–11:30"},{"s":8,"p":"m","x":"NCS8 — Prova SUB Turma A — 42 alunos — 07:30–11:30 — IMPRESSA ou RESTO"},{"s":1,"p":"m","x":"Recuperação PM Interprofissionais — 40 alunos — 8:30–10h"},{"s":2,"p":"t","x":"RCC2 — Reposição A1 — até 105 alunos — 13:30"},{"s":3,"p":"t","x":"PMSUS3 — Recuperação — 57 alunos — 13:30–15:30"},{"s":5,"p":"t","x":"NCS5 — D3 — 22 alunos — 13:30–16:00"},{"s":6,"p":"t","x":"HM6 — Prática Turma B — 46 alunos — 13:30–17:00"},{"s":8,"p":"t","x":"Reposição AICM1 e 2 (impressa) — 140 alunos — 13:30–18:30"}],"2026-12-03":[{"s":2,"p":"m","x":"HM2 — Prática Turma A — 52 alunos — 7:30–11:00"},{"s":8,"p":"m","x":"NCS8 — Prova SUB Turmas B/C — 110 alunos — 07:30–11:30 — IMPRESSA&nbsp;"},{"s":4,"p":"m","x":"NCS4 — D3 — 80 alunos — 7:30–11:30 labs + 202"},{"s":2,"p":"m","x":"Práticas Médicas Interprofissionais — AV2 — 100 alunos — 11:50–12:35"},{"s":6,"p":"m","x":"PMSUS6 — Recuperação Turmas A/B — até 100 alunos — 8h–11h IMPRESSA ou fazer 10:30 labs + 202"},{"s":2,"p":"t","x":"HM2 — Prática Turma B — 55 alunos — 13:30–17:00"},{"s":1,"p":"t","x":"Bases Biológicas 1 — A2 Teórica — 40 alunos — 13:30"},{"s":3,"p":"t","x":"HM3 — Prática Turma A — 57 alunos — 13:30–17h"},{"s":4,"p":"t","x":"PMSUS4 — Recuperação — 66 alunos — 13:30–15:30"}],"2026-12-04":[{"s":1,"p":"m","x":"RCC1 — Reposição A1/A2 — 40 alunos — 7:30"},{"s":3,"p":"m","x":"NCS3 — SUB D1/D2/D3 — até 50 alunos — 7:30–11:05"},{"s":5,"p":"m","x":"HM5 — Prática — 22 alunos — 07:30–11:30"},{"s":6,"p":"m","x":"6º sem — NCS6 — D3 turma B — 46 alunos — 7:30–11:00&nbsp;"},{"s":2,"p":"t","x":"Bases Biológicas 2 — A2 Teórica — 105 alunos — 13:30–17:30"},{"s":1,"p":"t","x":"Bases Biológicas 1 — A2 Prática — 40 alunos — 13:30"},{"s":5,"p":"t","x":"NCS5 — Substitutivas — até 20 alunos — 13:30 IMPRESSA"},{"s":6,"p":"t","x":"NCS6 — D3 turma A — 43 alunos — 13:30–17:30"},{"s":3,"p":"t","x":"Projeto Interdisciplinar — Recuperação — até 50 alunos — 16:30h"}],"2026-12-05":[],"2026-12-07":[{"s":2,"p":"m","x":"Bases Biológicas 2 — Reposição A1 Teórica — até 40 alunos — 7:30"},{"s":1,"p":"m","x":"Bases Biológicas 1 — Reposição A1/A2 Teórica — 40 alunos — 7:30"},{"s":6,"p":"m","x":"NCS6 — Substitutivas Turma A (&lt;20) — 7:30–10:30"},{"s":8,"p":"m","x":"NCS8 — Recuperação Turma C — 57 alunos — 07:30–11:30"},{"s":2,"p":"m","x":"RCC2 — Reposição A2 — até 40 alunos — 10h"},{"s":4,"p":"m","x":"Projeto Interdisciplinar II — Recuperação — até 70 alunos — 11h–12h"},{"s":2,"p":"t","x":"Bases Biológicas 2 — Reposição A1/A2 Prática — até 40 alunos — 13:30"},{"s":4,"p":"t","x":"NCS4 — Recuperação D1 — até 70 alunos — 13:30"},{"s":6,"p":"t","x":"NCS6 — Turma B Substitutivas (&lt;20) — 13:30–16:30"},{"s":8,"p":"t","x":"HMEC8 — Recuperação D1/D2 — até 150 alunos — 13:30–17h"},{"s":10,"p":"t","x":"Prova Teórica Final da Rotação — 105 alunos — 13:30–17:30 — IMPRESSA"},{"s":6,"p":"t","x":"HM6 — Recuperação D1/D2 Turmas A/B — até 80 alunos — 13:30h"}],"2026-12-08":[{"s":2,"p":"m","x":"Bases Biológicas 2 — Reposição A2 Teórica — até 100 alunos — 7:30"},{"s":2,"p":"m","x":"HM2 — Recuperação A1/A2 — até 100 alunos — 7:30"},{"s":3,"p":"m","x":"NCS3 — Recuperação D1 — até 50 alunos — 7:30–11:05"},{"s":4,"p":"m","x":"HM4 — Prática Turma A — 34 alunos — 7:30–9:00"},{"s":6,"p":"m","x":"NCS6 — Turma A Recuperação D1 (&lt;20) — 7:30–10:30"},{"s":8,"p":"m","x":"OSCE — Recuperação — 07:30–12h"},{"s":2,"p":"m","x":"Integração II — Recuperação T11 A/B — até 100 alunos — 11h30–12h30"},{"s":3,"p":"t","x":"NCS3 — Recuperação D2 — até 50 alunos — 13:30–17:05"},{"s":4,"p":"t","x":"HM4 — Prática Turma B — 41 alunos — 13:30–15:00"},{"s":8,"p":"t","x":"NCS8 — Recuperação — 95 alunos — 13:30–17:30"},{"s":1,"p":"t","x":"Bases Biológicas 1 — Reposição A1/A2 Prática — até 40 alunos — 15:30"}],"2026-12-09":[{"s":8,"p":"m","x":"NCS8 — Recuperação Turma A — 42 alunos — 07:30–10:30"},{"s":5,"p":"m","x":"PMSUS5 — D2 — 22 alunos — 8h–11h"},{"s":6,"p":"t","x":"HM6 — Recuperação Prática — até 100 alunos — 13:30–17:00"},{"s":8,"p":"t","x":"Recuperação AICM1 (impressa) — 140 alunos — 13:30–18:30"}],"2026-12-10":[{"s":2,"p":"m","x":"HM2 — Recuperação Prática — 100 alunos — 7:30–11:00"},{"s":4,"p":"m","x":"NCS4 — Recuperação D2 — até 70 alunos — 7:30"},{"s":8,"p":"m","x":"NCS8 — Recuperação Turmas B/C — 110 alunos — 07:30–10:30"},{"s":2,"p":"m","x":"Práticas Médicas Interprofissionais 2 — Recuperação — 100 alunos — 11:05–12:45"},{"s":2,"p":"t","x":"HM2 — Recuperação Prática (continuação) — 100 alunos — 13:30–17:00"},{"s":1,"p":"t","x":"Bases Biológicas 1 — Recuperação Teórica — 40 alunos — 13:30"},{"s":3,"p":"t","x":"HM3 — Recuperação — até 57 alunos — 13:30–17h"},{"s":5,"p":"t","x":"NCS5 — Recuperação D1 — 22 alunos — 13:30"},{"s":8,"p":"t","x":"Habilidades Cirúrgicas — Recuperação D1 e D2 — até 150 alunos — 14h"},{"s":5,"p":"t","x":"NCS5 — Recuperação D2 — 22 alunos — 15:15"}],"2026-12-11":[{"s":2,"p":"m","x":"RCC2 — Recuperação — 105 alunos — 7:30"},{"s":3,"p":"m","x":"NCS3 — Recuperação D3 Turma A — até 50 alunos — 7:30–11:05"},{"s":4,"p":"m","x":"NCS4 — Recuperação D3 — até 70 alunos — 7:30"},{"s":5,"p":"m","x":"HM5 — Recuperação — 20 alunos — 07:30–09:30"},{"s":6,"p":"m","x":"NCS6 — Turma B Recuperação D1 (&lt;20) — 7:30–10:30"},{"s":1,"p":"m","x":"RCC1 — Recuperação A1/A2 — 40 alunos — 7:30"},{"s":8,"p":"m","x":"PMSUS8 — D2 Turmas A/B/C — 150 alunos — 11h–13h30"},{"s":2,"p":"t","x":"Bases Biológicas 2 — Recuperação Teórica — até 105 alunos — 13:30"},{"s":1,"p":"t","x":"Bases Biológicas 1 — Recuperação Prática — 40 alunos — 13:30"},{"s":5,"p":"t","x":"NCS5 — Recuperação D3 — 20 alunos — 13:30–15:00"},{"s":6,"p":"t","x":"NCS6 — Turmas A/B Recuperação D2/D3 (&lt;30) — 13:30–16:30"}],"2026-12-12":[],"2026-12-14":[{"s":2,"p":"t","x":"Bases Biológicas 2 — Recuperação Prática — até 40 alunos — 13:30"},{"s":8,"p":"t","x":"Recuperação AICM2 (impressa) — 140 alunos — 13:30–18:30"}],"2026-12-15":[{"s":4,"p":"m","x":"HM4 — Recuperação Turma A — até 30 alunos — 7:30–9:00"},{"s":4,"p":"t","x":"HM4 — Recuperação Turma B — até 40 alunos — 13:30–15:00"},{"s":8,"p":"t","x":"PMSUS8 — Recuperação D2 — 20 alunos — 18h"}],"2026-12-16":[{"s":5,"p":"m","x":"PMSUS5 — Recuperação — até 20 alunos — 8h–11h"}],"2026-12-17":[],"2026-12-18":[],"2026-12-19":[],"2026-12-21":[],"2026-12-22":[],"2026-12-23":[],"2026-12-24":[],"2026-12-25":[],"2026-12-26":[],"2026-12-28":[],"2026-12-29":[],"2026-12-30":[],"2026-12-31":[]};
+
+// ============ RENDERIZAÇÃO (SEM DOMINGO) ============
+const months = [
+  {y:2026,m:8,name:"Agosto 2026"},
+  {y:2026,m:9,name:"Setembro 2026"},
+  {y:2026,m:10,name:"Outubro 2026"},
+  {y:2026,m:11,name:"Novembro 2026"},
+  {y:2026,m:12,name:"Dezembro 2026"}
+];
+const weekdayNames = ["Seg","Ter","Qua","Qui","Sex","Sáb"];
+const pad = n => String(n).padStart(2,'0');
+function semLabel(sem){ return sem + "º sem"; }
+function monIndex(dow){ return (dow + 6) % 7; }
+
+function buildMonth(y,m,name){
+  const monthDiv = document.createElement('div');
+  monthDiv.className = 'month';
+  const h2 = document.createElement('h2'); h2.textContent = name;
+  monthDiv.appendChild(h2);
+
+  const grid = document.createElement('div');
+  grid.className = 'calendar-grid';
+
+  weekdayNames.forEach(w=>{
+    const wh = document.createElement('div');
+    wh.className='weekday-header'; wh.textContent=w;
+    grid.appendChild(wh);
+  });
+
+  const daysInMonth = new Date(y, m, 0).getDate();
+  const firstDow = new Date(y, m-1, 1).getDay();
+  const firstMonIdx = monIndex(firstDow);
+
+  if(firstMonIdx < 6){
+    for(let i=0;i<firstMonIdx;i++){
+      const empty = document.createElement('div');
+      empty.className='day-cell empty';
+      grid.appendChild(empty);
+    }
+  }
+
+  for(let d=1; d<=daysInMonth; d++){
+    const dow = new Date(y,m-1,d).getDay();
+    const mIdx = monIndex(dow);
+    if(mIdx===6) continue;
+
+    const dateKey = `${y}-${pad(m)}-${pad(d)}`;
+    const cell = document.createElement('div');
+    cell.className = 'day-cell' + (mIdx===5 ? ' saturday' : '');
+    cell.dataset.date = dateKey;
+
+    const num = document.createElement('div');
+    num.className='day-num';
+    num.textContent = `${pad(d)}/${pad(m)} (${weekdayNames[mIdx]})`;
+    cell.appendChild(num);
+
+    cell.appendChild(createSlot('🌅 Manhã', dateKey, 'm'));
+    cell.appendChild(createSlot('🌇 Tarde', dateKey, 't'));
+    grid.appendChild(cell);
+  }
+
+  monthDiv.appendChild(grid);
+  return monthDiv;
+}
+
+function createSlot(label, dateKey, period){
+  const slot = document.createElement('div');
+  slot.className='slot';
+  slot.dataset.date = dateKey;
+  slot.dataset.period = period;
+  const lab = document.createElement('span');
+  lab.className='slot-label'; lab.textContent=label;
+  slot.appendChild(lab);
+
+  const list = (events[dateKey]||[]).filter(e=>e.p===period);
+  list.forEach(ev => slot.appendChild(createEventDiv(ev.s, ev.x)));
+
+  const btn = document.createElement('button');
+  btn.className='add-btn'; btn.textContent='+ prova';
+  btn.onclick = () => addEvent(slot);
+  slot.appendChild(btn);
+  return slot;
+}
+
+function createEventDiv(sem, textoSemPrefixo){
+  const div = document.createElement('div');
+  div.className = 'event sem' + sem;
+  div.contentEditable = 'true';
+  div.dataset.sem = sem;
+  div.innerHTML = '<span class="sem-tag">' + semLabel(sem) + '</span> — ' + textoSemPrefixo;
+
+  const del = document.createElement('span');
+  del.className='del'; del.textContent='×';
+  del.title='Remover';
+  del.onclick = (e) => { e.stopPropagation(); div.remove(); };
+  div.appendChild(del);
+  return div;
+}
+
+function addEvent(slot){
+  const sem = prompt("Número do semestre (1,2,3,4,5,6,8,10,12):", "1");
+  if(!sem) return;
+  const texto = prompt("Descreva a prova (Disciplina — Tipo — Alunos — Horário). O semestre já será adicionado automaticamente no início:", "Disciplina — Tipo — Alunos — Horário");
+  if(!texto) return;
+  const btn = slot.querySelector('.add-btn');
+  const newEvent = createEventDiv(sem.trim(), texto);
+  slot.insertBefore(newEvent, btn);
+  applySemesterFilter();
+}
+
+const container = document.getElementById('calendarContainer');
+months.forEach(mo => container.appendChild(buildMonth(mo.y, mo.m, mo.name)));
+
+// ============ FORMATAÇÃO DA COR DA FONTE ============
+let savedSelection = null;
+let activeEditable = null;
+
+document.addEventListener("selectionchange", () => {
+  const selection = window.getSelection();
+  if (!selection || selection.rangeCount === 0) return;
+  const range = selection.getRangeAt(0);
+  const node = range.commonAncestorContainer;
+  const element = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement;
+  const editable = element?.closest(".event[contenteditable='true']");
+  if (editable) {
+    savedSelection = range.cloneRange();
+    activeEditable = editable;
+  }
+});
+
+function openFontColorPicker(){
+  if (!savedSelection || !activeEditable) {
+    alert("Selecione primeiro um trecho de texto dentro de uma prova.");
+    return;
+  }
+  document.getElementById("fontColorPicker").click();
+}
+
+function applyFontColor(color){
+  if (!savedSelection || !activeEditable) {
+    alert("Selecione primeiro um trecho de texto dentro de uma prova.");
+    return;
+  }
+  const selection = window.getSelection();
+  activeEditable.focus();
+  selection.removeAllRanges();
+  selection.addRange(savedSelection);
+  document.execCommand("foreColor", false, color);
+  savedSelection = selection.rangeCount ? selection.getRangeAt(0).cloneRange() : null;
+}
+
+function clearFontColor(){
+  if (!savedSelection || !activeEditable) {
+    alert("Selecione primeiro um trecho de texto dentro de uma prova.");
+    return;
+  }
+  const selection = window.getSelection();
+  activeEditable.focus();
+  selection.removeAllRanges();
+  selection.addRange(savedSelection);
+  document.execCommand("removeFormat", false, null);
+  savedSelection = selection.rangeCount ? selection.getRangeAt(0).cloneRange() : null;
+}
+
+// ============ FILTRO DE SEMESTRES ============
+const availableSemesters = [1, 2, 3, 4, 5, 6, 8, 10, 12];
+
+function createSemesterFilters(){
+  const containerEl = document.getElementById("semesterOptions");
+  if (!containerEl) return;
+  availableSemesters.forEach(semester => {
+    const label = document.createElement("label");
+    label.className = "semester-option";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = semester;
+    checkbox.checked = true;
+    checkbox.onchange = applySemesterFilter;
+    const text = document.createElement("span");
+    text.textContent = `${semester}º sem`;
+    label.appendChild(checkbox);
+    label.appendChild(text);
+    containerEl.appendChild(label);
+  });
+}
+
+function getSelectedSemesters(){
+  return [...document.querySelectorAll("#semesterOptions input[type='checkbox']:checked")]
+    .map(input => String(input.value));
+}
+
+function applySemesterFilter(){
+  const selected = getSelectedSemesters();
+  document.querySelectorAll(".event").forEach(ev=>{
+    const semester = String(ev.dataset.sem);
+    if (selected.includes(semester)) {
+      ev.classList.remove("semester-hidden");
+    } else {
+      ev.classList.add("semester-hidden");
+    }
+  });
+}
+
+function selectAllSemesters(){
+  document.querySelectorAll("#semesterOptions input[type='checkbox']").forEach(cb => cb.checked = true);
+  applySemesterFilter();
+}
+
+function clearAllSemesters(){
+  document.querySelectorAll("#semesterOptions input[type='checkbox']").forEach(cb => cb.checked = false);
+  applySemesterFilter();
+}
+
+createSemesterFilters();
+applySemesterFilter();
+
+// ============ CORREÇÃO: TEMPLATE LIMPO PARA EXPORTAÇÃO (evita duplicação) ============
+function getCleanTemplate(){
+  const clone = document.documentElement.cloneNode(true);
+  const cal = clone.querySelector('#calendarContainer');
+  if(cal) cal.innerHTML = '';
+  const semOpts = clone.querySelector('#semesterOptions');
+  if(semOpts) semOpts.innerHTML = '';
+  return '<!DOCTYPE html>\n' + clone.outerHTML;
+}
+
+// ============ EXPORTAÇÃO MANUAL — TODOS OS SEMESTRES (ignora filtro) ============
+function exportCalendar(){
+  const newEvents = {};
+  document.querySelectorAll('.slot').forEach(slot=>{
+    const date = slot.dataset.date;
+    const period = slot.dataset.period;
+    if(!newEvents[date]) newEvents[date] = [];
+    slot.querySelectorAll('.event').forEach(ev=>{
+      const sem = ev.dataset.sem;
+      const clone = ev.cloneNode(true);
+      const delSpan = clone.querySelector('.del');
+      if(delSpan) delSpan.remove();
+      const semTag = clone.querySelector('.sem-tag');
+      let fullHtml = clone.innerHTML.trim();
+      if(semTag){
+        const prefixText = semTag.outerHTML + ' — ';
+        if(fullHtml.startsWith(prefixText)) fullHtml = fullHtml.slice(prefixText.length);
+      }
+      newEvents[date].push({s: isNaN(sem) ? sem : Number(sem), p: period, x: fullHtml});
+    });
+  });
+
+  const template = getCleanTemplate();
+  const eventsRegex = /const events = \{[\s\S]*?\};\n/;
+  const newEventsString = 'const events = ' + JSON.stringify(newEvents, null, 0) + ';\n';
+  const updatedHtml = template.replace(eventsRegex, newEventsString);
+
+  const blob = new Blob([updatedHtml], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const now = new Date();
+  const stamp = now.toISOString().slice(0,10);
+  a.href = url;
+  a.download = `calendario_provas_2026_2_${stamp}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  alert('Calendário exportado com TODOS os semestres, cores de fonte e edições preservadas! Verifique sua pasta de downloads.');
+}
+
+// ============ EXPORTAÇÃO — SOMENTE SEMESTRES FILTRADOS ============
+function exportFilteredCalendar(){
+  const selected = getSelectedSemesters();
+
+  if(selected.length === 0){
+    alert('Nenhum semestre está selecionado. Marque ao menos um semestre antes de exportar o filtrado.');
+    return;
+  }
+
+  const newEvents = {};
+  document.querySelectorAll('.slot').forEach(slot=>{
+    const date = slot.dataset.date;
+    const period = slot.dataset.period;
+    if(!newEvents[date]) newEvents[date] = [];
+    slot.querySelectorAll('.event').forEach(ev=>{
+      const sem = ev.dataset.sem;
+      if(!selected.includes(String(sem))) return;
+      const clone = ev.cloneNode(true);
+      const delSpan = clone.querySelector('.del');
+      if(delSpan) delSpan.remove();
+      const semTag = clone.querySelector('.sem-tag');
+      let fullHtml = clone.innerHTML.trim();
+      if(semTag){
+        const prefixText = semTag.outerHTML + ' — ';
+        if(fullHtml.startsWith(prefixText)) fullHtml = fullHtml.slice(prefixText.length);
+      }
+      newEvents[date].push({s: isNaN(sem) ? sem : Number(sem), p: period, x: fullHtml});
+    });
+    if(newEvents[date].length === 0) delete newEvents[date];
+  });
+
+  const template = getCleanTemplate();
+  const eventsRegex = /const events = \{[\s\S]*?\};\n/;
+  const newEventsString = 'const events = ' + JSON.stringify(newEvents, null, 0) + ';\n';
+  const updatedHtml = template.replace(eventsRegex, newEventsString);
+
+  const blob = new Blob([updatedHtml], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const now = new Date();
+  const stamp = now.toISOString().slice(0,10);
+  const semLabelStr = selected.length === availableSemesters.length ? 'todos' : selected.join('-');
+  a.href = url;
+  a.download = `calendario_provas_2026_2_FILTRADO_sem-${semLabelStr}_${stamp}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  alert(`Arquivo filtrado exportado com sucesso! Contém apenas os semestres: ${selected.join(', ')}.`);
+}
+</script>
+
+
+
+
+							<script>
+                            	
+							</script>
+                        
+                        
+                    </body></html>
